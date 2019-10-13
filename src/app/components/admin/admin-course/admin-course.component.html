@@ -1,0 +1,214 @@
+<br>
+
+
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Courses</h1>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Courses</li>
+                </ol>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                    </div>
+                    <div class="panel-body">
+                        <legend>List</legend>
+                        <!-- <div class="row">
+
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <label for="">Course</label>
+                            </div>
+
+                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                <select class="form-control" [(ngModel)]="courseAdded" (change)="change($event.target.value)">
+                                    <option *ngFor="let item of course" [value]="item.id" >{{item.name}}</option>
+                                </select>
+                            </div>
+                        </div> -->
+
+                        <br>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Start</th>
+                                    <th>End</th>
+                                    <th>Fee</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of course | paginate: {
+                                                itemsPerPage: 10,
+                                                currentPage: p,
+                                                totalItems: total } ; let i=index ">
+                                    <td (click)="detail(item.id)" data-toggle="modal" data-target="#detail">{{ (p-1)*10 + i +1}}</td>
+                                    <td (click)="detail(item.id)" data-toggle="modal" data-target="#detail">{{ item.name }}</td>
+                                    <td (click)="detail(item.id)" data-toggle="modal" data-target="#detail">{{ item.start_year }}</td>
+                                    <td (click)="detail(item.id)" data-toggle="modal" data-target="#detail">{{ item.end_year }}</td>
+                                    <td (click)="detail(item.id)" data-toggle="modal" data-target="#detail">{{ item.fee }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" (click)="delete(item.id)">Del</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                    </div>
+                    <div class="panel-body">
+                        <form [formGroup]="formCourse" (ngSubmit)="addCourse()">
+                            <legend>Add Course</legend>
+
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" formControlName="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Start</label>
+                                <input type="date" class="form-control" formControlName="start_year">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">End</label>
+                                <input type="date" class="form-control"  formControlName="end_year" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Photo</label>
+                                <input type="file" class="form-control" (change)="onFileSelect($event)" formControlName="images">
+                            </div>
+
+                            <img *ngIf="imgView" [src]="imgView">
+
+                            <div class="form-group">
+                                <label for="">Fee</label>
+                                <input type="number" class="form-control" formControlName="fee">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Program</label>
+                                <select class="form-control" formControlName="program" [(ngModel)]="new_Course.program_id">
+                                    <option *ngFor="let item of program" [value]="item.id" >{{item.name}}</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <div id="detail" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Header</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+            <div class="modal-body">
+              
+              <div class="row">
+                  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <form role="form" [formGroup]="formCourseDetail" (ngSubmit)="editCourse()">
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" [(ngModel)]="courseDetail.name" [ngModelOptions]="{standalone: true}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Start</label>
+                            <input type="date" class="form-control" [(ngModel)]="courseDetail.start_year" [ngModelOptions]="{standalone: true}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">End</label>
+                            <input type="date" class="form-control"  [(ngModel)]="courseDetail.end_year" [ngModelOptions]="{standalone: true}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Fee</label>
+                            <input type="number" class="form-control" [(ngModel)]="courseDetail.fee" [ngModelOptions]="{standalone: true}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Program</label>
+                            <select class="form-control" [(ngModel)]="courseDetail.program_id" [ngModelOptions]="{standalone: true}">
+                                <option *ngFor="let item of program" [value]="item.id" >{{item.name}}</option>
+                            </select>
+                        </div>
+                        
+                    
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </div>
+
+                  
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <img [src]="courseDetail.image" alt="No Image">
+                        <input type="file" class="form-control" (change)="onChangeImgDetail($event)" [(ngModel)]="imgDetail">
+                  </div>
+                  
+              </div>
+              
+                
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+</section>

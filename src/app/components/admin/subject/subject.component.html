@@ -1,0 +1,134 @@
+<br>
+
+
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Subjects</h1>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Subjects</li>
+                </ol>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                    </div>
+                    <div class="panel-body">
+                        <legend>List</legend>
+                        <div class="row">
+
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <label for="">Course</label>
+                            </div>
+
+                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                <select class="form-control" [(ngModel)]="courseAdded" (change)="change($event.target.value)">
+                                    <option *ngFor="let item of course" [value]="item.id" >{{item.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <br>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Credit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of subjects | paginate: {
+                                                itemsPerPage: 10,
+                                                currentPage: p,
+                                                totalItems: total } ; let i=index ">
+                                    <td [routerLink]="[ '/subjects', item.id ]">{{ i+1 }}</td>
+                                    <td [routerLink]="[ '/subjects', item.id ]">{{ item.name }}</td>
+                                    <td [routerLink]="[ '/subjects', item.id ]">{{ item.credit }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" (click)="delete(item.id)">Del</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                    </div>
+                    <div class="panel-body">
+                        <form #subject="ngForm" (ngSubmit)="addSub(subject)">
+                            <legend>Add Subject</legend>
+
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" [(ngModel)]="subject.name" #name="ngModel" name="name" minlength="2" required pattern="^[A-Za-z0-9]+">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Credit</label>
+                                <input type="number" class="form-control" [(ngModel)]="subject.credit" #credit="ngModel" name="credit">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Teacher</label>
+                                <select class="form-control" (change)="changeteacher($event.target.value)" name="teacher">
+                                                        <option *ngFor="let item of teacher" [value]="item.id" >{{item.username}}</option>
+                                                    </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Course</label>
+                                <select class="form-control" (change)="changeProgram($event.target.value)" name="program">
+                                                        <option *ngFor="let item of course" [value]="item.id">{{ item.name }}</option>
+                                                    </select>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+</section>

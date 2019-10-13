@@ -1,0 +1,66 @@
+<br>
+
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Registration List</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Registration list</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                
+            </div>
+            
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Course</th>
+                                    <th>Student</th>
+                                    <!-- <th>Is active</th> -->
+                                    <th>Status</th>
+                                    <th>Approval</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of registrations" [ngStyle]="{'cursor': 'pointer'}">
+                                    <!-- [routerLink]="[ '/admin/registration', item.id]" -->
+                                    <td>{{ item.id }}</td>
+                                    <td>{{ item.course_id.name }}</td>
+                                    <td>{{ item.student_id.username }}</td>
+                                    <!-- <td>{{ item.isActive }}</td> -->
+                                    <td>{{ item.status }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning" *ngIf="item.status === 'liked'" (click)="approve(item.id)">Approve</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                
+                </div>
+        </div>
+    </div>
+    
+
+</section>
