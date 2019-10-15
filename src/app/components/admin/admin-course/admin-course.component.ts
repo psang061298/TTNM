@@ -220,12 +220,13 @@ export class AdminCourseComponent implements OnInit,OnDestroy {
           showConfirmButton: false,
           timer: 1500
         })
+        this.loadCourse();
       },
       error: error => {
         console.log(error);
       }
     });
-    this.loadCourse();
+    
     this.imgDetail = '';
   }
 }

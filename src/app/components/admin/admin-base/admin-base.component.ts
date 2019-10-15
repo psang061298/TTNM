@@ -26,6 +26,7 @@ export class AdminBaseComponent implements OnInit {
       this.adminClassService.load = true;
       this.refresh();
     }
+    
   }
 
   refresh(): void {

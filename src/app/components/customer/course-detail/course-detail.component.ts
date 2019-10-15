@@ -46,10 +46,11 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
       this.subscription = this.courseService.getOneCourse(data['id']).subscribe( (crs: Course) => {
         this.course = crs;
         this.subjects = crs['subject'];
-
         for (const i of this.subjects) {
           this.totalCredits += i.credit;
         }
+        console.log(this.subjects);
+        
       });
     });
   }
