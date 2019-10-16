@@ -15,10 +15,6 @@
         <!-- <h3 class="heading text-capitalize mb-lg-5 mb-4"> Detailed Course - <span>{{ course.program_id.name }}</span> </h3> -->
         <div class="container-fluid">
 
-            <select class="custom-select" (change)="changeSelect($event.target.value)">
-                    <option *ngFor="let item of courses; let i=index" value={{item.id}}>{{ item.name }}</option>
-                </select>
-
             <div class="panel panel-danger">
                 <div class="panel-heading">
                     <h3 [ngStyle]="{'background-color': '#DC3545', 'color':'white', 'padding':'5px'}">Subjects in this course:</h3>
@@ -48,11 +44,52 @@
                             </tr> -->
                         </tbody>
                     </table>
-
+                    
+                    <button type="button" class="btn btn-success" (click)="print()">button</button>
+                    
                 </div>
             </div>
 
         </div>
+    </div>
+
+    <div id="forPrint" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                THE DEGREE OF BACHELOG
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                
+                <form role="form">
+                    <!-- <legend>Form title</legend> -->
+                
+                    <div class="form-group row">
+                        
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <label for="">label</label>
+                            
+                        </div>
+                        
+                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                        span
+                            
+                        </div>
+                        
+                    </div>
+                
+                    
+                
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                
+            </div>
+        </div>
+        
+        
     </div>
 </section>
 <app-footer></app-footer>

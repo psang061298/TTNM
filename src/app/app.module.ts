@@ -30,6 +30,7 @@ import { ScoreComponent } from './components/customer/score/score.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ProgramComponent } from './components/admin/program/program.component';
 
+import { NgxPrinterModule } from 'ngx-printer';
 
 
 const appRoutes: Routes = [
@@ -146,7 +147,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgxPrinterModule.forRoot({printOpenWindow: true})
   ],
   providers: [
     AuthGuard,

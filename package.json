@@ -22,6 +22,8 @@
     "@types/jquery": "^3.3.31",
     "jquery": "^3.4.1",
     "ngx-pagination": "^4.1.0",
+    "ngx-print": "^1.2.0-beta.3",
+    "ngx-printer": "^0.2.0",
     "rxjs": "~6.4.0",
     "sweetalert2": "^8.16.1",
     "tslib": "^1.9.0",

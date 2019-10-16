@@ -4,6 +4,7 @@ import { ScoreService } from './../../../services/score.service';
 // import { Schedule } from './../../../models/schedual.model';
 import { CourseService } from 'src/app/services/course.service';
 import { Course } from 'src/app/models/course.model';
+import { NgxPrinterService } from 'ngx-printer'
 
 @Component({
   selector: 'app-score',
@@ -34,7 +35,8 @@ export class ScoreComponent implements OnInit {
 
   constructor(
     public scoreService: ScoreService,
-    public courseService: CourseService
+    public courseService: CourseService,
+    private printerService: NgxPrinterService
   ) { }
 
   ngOnInit() {
@@ -70,5 +72,14 @@ export class ScoreComponent implements OnInit {
   //     console.log(this.schedule);
   //   });
   // }
+
+  print(){
+    this.printerService.printCurrentWindow();
+    console.log('in');
+    this.courseService.getInfo(2).subscribe(data => {
+      console.log(data);
+      
+    })
+  }
 
 }
