@@ -4,6 +4,8 @@ import { ScoreService } from './../../../services/score.service';
 // import { Schedule } from './../../../models/schedual.model';
 import { CourseService } from 'src/app/services/course.service';
 import { Course } from 'src/app/models/course.model';
+import { Transcript } from 'src/app/models/transcript.model';
+import { TranscriptService } from './../../../services/transcript.service';
 
 @Component({
   selector: 'app-score',
@@ -15,6 +17,8 @@ export class ScoreComponent implements OnInit {
   // courses: Course[];
 
   courses : any[] = [];
+  transcript : Transcript[] = [];
+  acc: number;
 
   // course : Object = {
   //   name : '',
@@ -34,11 +38,13 @@ export class ScoreComponent implements OnInit {
 
   constructor(
     public scoreService: ScoreService,
-    public courseService: CourseService
+    public courseService: CourseService,
+    public transcriptService: TranscriptService
   ) { }
 
   ngOnInit() {
     this.loadScore();
+    this.loadTranscript();
   }
 
   loadScore(){
@@ -71,4 +77,18 @@ export class ScoreComponent implements OnInit {
   //   });
   // }
 
+  loadTranscript(){
+    this.subscription = this.transcriptService.getAllTranScript().subscribe( (data: Transcript[] ) => {
+      this.transcript = data;
+      console.log(data);
+      console.log(typeof(this.transcript[0]['accumutation']));
+    });
+  }
+
+  checkGraduate(acc){
+    if(acc.accumutation >= 25){
+      return true;
+    }
+    return false;
+  }
 }
