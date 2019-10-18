@@ -29,8 +29,11 @@ import { ScheduleComponent } from './components/customer/schedule/schedule.compo
 import { ScoreComponent } from './components/customer/score/score.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ProgramComponent } from './components/admin/program/program.component';
+import { CertificateComponent } from './components/customer/certificate/certificate.component';
+import { UserManagementComponent } from './components/admin/user-management/user-management.component';
 
 import { NgxPrinterModule } from 'ngx-printer';
+import { from } from 'rxjs';
 
 
 const appRoutes: Routes = [
@@ -69,6 +72,10 @@ const appRoutes: Routes = [
   {
     path : 'score',
     component : ScoreComponent,
+  },
+  {
+    path : 'certificate',
+    component : CertificateComponent,
   },
   {
     path : 'admin',
@@ -111,6 +118,10 @@ const appRoutes: Routes = [
         path : 'program',
         component: ProgramComponent
       },
+      {
+        path : 'user',
+        component: UserManagementComponent
+      },
 
     ],
   }
@@ -138,7 +149,9 @@ const appRoutes: Routes = [
     ScheduleComponent,
     ScoreComponent,
     AdminCourseComponent,
-    ProgramComponent
+    ProgramComponent,
+    UserManagementComponent,
+    CertificateComponent
   ],
   imports: [
     BrowserModule,
