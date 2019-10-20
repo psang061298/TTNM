@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { EduProgramService } from '../../../services/edu-program.service';
 import { CourseService } from '../../../services/course.service';
 import { SubjectService } from '../../../services/subject.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-program',
@@ -18,15 +19,19 @@ export class ProgramComponent implements OnInit, OnDestroy {
   p: number;
   total: number;
 
+  teacher : any[] = [];
+
   constructor(
     public courseService: CourseService,
     public eduProgramService: EduProgramService,
     public subjectService: SubjectService,
+    public userService : UserService
   ) { }
 
   ngOnInit(){
     // this.loadCourse();
     this.loadProgram();
+    this.loadTeacher();
   }
 
   ngOnDestroy() {
@@ -44,6 +49,12 @@ export class ProgramComponent implements OnInit, OnDestroy {
   loadSubjectByProgram(id){
     this.subjectService.getSubjectOfCourse(id).subscribe(data => {
       this.subject = data
+    });
+  }
+
+  loadTeacher(){
+    this.userService.getAllTeacher(2).subscribe(data => {
+      this.teacher = data['results'];
     });
   }
 

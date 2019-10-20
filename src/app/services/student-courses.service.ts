@@ -38,4 +38,11 @@ export class StudentCoursesService {
     return this.http.get<Register[]>(`${this.API}/api/stup/?status=registered`, httpOptions);
   }
 
+  pauseCourseByStudent(id: number){
+    const json = JSON.stringify({
+      status : "paused"
+    });
+    return this.http.patch<any>(`${this.API}/api/stup/${id}/`, json ,httpOptions);
+  }
+
 }

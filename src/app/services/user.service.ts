@@ -36,6 +36,10 @@ export class UserService {
     return this.http.get<any[]>(`${this.API}/api/user/?page=`+page, httpOptions);
   }
 
+  getAllTeacher(page:number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.API}/api/user/?page=`+page+`&search=teacher`, httpOptions);
+  }
+
   deleteUser(id : number): Observable<any[]> {
     return this.http.delete<any[]>(`${this.API}/api/user/`+id+`/`, httpOptions);
   }

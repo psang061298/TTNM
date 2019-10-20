@@ -1,7 +1,7 @@
 .bg-certificate{
-    background-image: url('../../../../assets/images/bg.png');
+    // background-image: url('../../../../assets/images/bg.png');
     background-repeat: no-repeat;
-    height: 1000px;
+    height: 100%;
 
   /* Center and scale the image nicely */
     background-position: center;
@@ -24,4 +24,14 @@
 
 .title{
     color: red;
+}
+
+.margin1{
+    // padding-top: 50px !important;
+    margin-top: 50px !important;
+}
+
+.margin0{
+    // padding-top: 50px !important;
+    margin-top: 150px !important;
 }

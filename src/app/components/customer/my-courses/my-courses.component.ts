@@ -61,4 +61,10 @@ export class MyCoursesComponent implements OnInit {
     }
   }
 
+  pauseCourse(id){
+    this.studentCourseService.pauseCourseByStudent(id).subscribe( data => {
+      this.ngOnInit();
+    });
+  }
+
 }
