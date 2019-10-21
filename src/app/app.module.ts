@@ -33,7 +33,7 @@ import { CertificateComponent } from './components/customer/certificate/certific
 import { UserManagementComponent } from './components/admin/user-management/user-management.component';
 
 import { NgxPrinterModule } from 'ngx-printer';
-import { from } from 'rxjs';
+import { ProfileComponent } from './components/customer/profile/profile.component';
 
 
 const appRoutes: Routes = [
@@ -76,6 +76,10 @@ const appRoutes: Routes = [
   {
     path : 'certificate',
     component : CertificateComponent,
+  },
+  {
+    path : 'profile',
+    component : ProfileComponent,
   },
   {
     path : 'admin',
@@ -151,7 +155,8 @@ const appRoutes: Routes = [
     AdminCourseComponent,
     ProgramComponent,
     UserManagementComponent,
-    CertificateComponent
+    CertificateComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

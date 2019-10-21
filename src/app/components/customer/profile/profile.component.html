@@ -1,0 +1,71 @@
+<div class="bg">
+
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+        </div>
+
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <img src="{{ profile.image }}">
+                    <!-- <button type="button" class="btn btn-danger">Change avatar image</button> -->
+                    <input type="file" (change)="submitFile($event)">
+
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>
+                                    First name:
+                                </th>
+                                <td>
+                                    <input class="form-control" [(ngModel)]="profile.first_name">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Last name:</th>
+                                <td>
+                                    <input class="form-control" [(ngModel)]="profile.last_name">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <td>
+                                    <input class="form-control" [(ngModel)]="profile.email">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Phone:</th>
+                                <td>
+                                    <input class="form-control" [(ngModel)]="profile.phone">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Address:</th>
+                                <td>
+                                    <textarea cols="55" rows="3" [ngStyle]="{'padding-left': '10px'}" [(ngModel)]="profile.address">{{ profile.address }}</textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <button type="button" class="btn btn-success" (click)="updateProfile()">Save changes</button>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+        </div>
+    </div>
+
+</div>

@@ -6,7 +6,7 @@
             <div class="col-lg-6">
             </div>
             <div class="col-lg-6 buttons">
-                <h5 [ngStyle]="{'color': 'cyan', 'display':'inline'}">Welcome {{ username }}</h5>
+                <h5 [ngStyle]="{'color': 'cyan', 'display':'inline', 'cursor':'pointer'}" [routerLink]="[ '/profile']">Welcome {{ username }}</h5>
                 &nbsp;
                 <button type="button" class="btn btn-info1 btn-lg-block w3ls-btn1 px-4 text-capitalize" data-toggle="modal" aria-pressed="false" data-target="#exampleModal1" (click)="logout()">
                     Logout
