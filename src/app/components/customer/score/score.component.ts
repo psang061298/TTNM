@@ -65,11 +65,9 @@ export class ScoreComponent implements OnInit {
         course['name'] = data[index]['subject_id']['name'];
         course['score'] = data[index]['score'];
         this.courses.push(course);
-        
+
       }
-      console.log(this.courses);
-      
-    })
+    });
   }
 
   // loadCourses() {
