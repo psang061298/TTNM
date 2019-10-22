@@ -4,11 +4,12 @@ import { ScoreService } from './../../../services/score.service';
 // import { Schedule } from './../../../models/schedual.model';
 import { CourseService } from 'src/app/services/course.service';
 import { Course } from 'src/app/models/course.model';
-
+import { Router } from '@angular/router';
 import { NgxPrinterService } from 'ngx-printer';
 
 import { Transcript } from 'src/app/models/transcript.model';
 import { TranscriptService } from './../../../services/transcript.service';
+import { SharingDataService } from './../../../services/sharing-data.service';
 
 @Component({
   selector: 'app-score',
@@ -40,15 +41,18 @@ export class ScoreComponent implements OnInit {
 
 
   constructor(
+    public routerService: Router,
     public scoreService: ScoreService,
     public courseService: CourseService,
     private printerService: NgxPrinterService,
-    public transcriptService: TranscriptService
+    public transcriptService: TranscriptService,
+    public sharingDataService : SharingDataService,
   ) { }
 
   ngOnInit() {
     this.loadScore();
     this.loadTranscript();
+    // this.setGraduation2();
   }
 
   loadScore(){
@@ -86,7 +90,6 @@ export class ScoreComponent implements OnInit {
     console.log('in');
     this.courseService.getInfo(2).subscribe(data => {
       console.log(data);
-      
     })
   }
 
@@ -104,4 +107,20 @@ export class ScoreComponent implements OnInit {
     }
     return false;
   }
+
+  setGraduation(student, course, gpa){
+    this.sharingDataService.setOption('student', student);
+    this.sharingDataService.setOption('course', course);
+    this.sharingDataService.setOption('rank', gpa);
+    console.log(this.sharingDataService.getOption());
+
+    this.routerService.navigateByUrl('certificate');
+  }
+
+  // setGraduation2(){
+  //   this.sharingDataService.setOption('student', "student");
+  //   this.sharingDataService.setOption('course', "course");
+  //   this.sharingDataService.setOption('rank', "gpa");
+  //   console.log(this.sharingDataService.getOption());
+  // }
 }

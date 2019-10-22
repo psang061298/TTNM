@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -130,6 +130,9 @@ const appRoutes: Routes = [
     ],
   }
 ];
+
+export const routing: ModuleWithProviders =  
+    RouterModule.forRoot(appRoutes);
 
 @NgModule({
   declarations: [

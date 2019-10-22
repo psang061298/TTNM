@@ -13,7 +13,7 @@
                         <th>ID</th>
                         <th>Course</th>
                         <th>Subject</th>
-                        <th>Teacher</th>
+                        <!-- <th>Teacher</th> -->
                         <th>Student</th>
                         <th>Score</th>
                     </tr>
@@ -23,13 +23,13 @@
                         <tr *ngFor="let item of classes">
                             <!--  [routerLink]="[ '/admin/classes', item.id ]" -->
                             <td>{{ item.id }}</td>
-                            <td>{{ item.studyprogram.course_id.program_id.name }}</td>
+                            <td>{{ item.studyprogram.course_id.name }}</td>
                             <td>{{ item.subject.name }}</td>
-                            <td>
+                            <!-- <td>
                                 <p *ngFor="let i of item.subject.teacher_id">
                                     {{ i.sub_id }}
                                 </p>
-                            </td>
+                            </td> -->
                             <td>{{ item.studyprogram.student_id.sub_id }}</td>
                             <td>
                                 <form *ngIf="!isAdmin">
