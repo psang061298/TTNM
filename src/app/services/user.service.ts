@@ -28,9 +28,9 @@ export class UserService {
   //   return this.http.get<Subject[]>(`${this.API}/api/subject/`);
   // }
 
-  getCurrentUsername(): Observable<User> {
-    return this.http.get<User>(`${this.API}/api/user/`, httpOptions);
-  }
+  // getCurrentUsername(): Observable<User> {
+  //   return this.http.get<User>(`${this.API}/api/user/`, httpOptions);
+  // }
 
   getAllUser(page:number): Observable<any[]> {
     return this.http.get<any[]>(`${this.API}/api/user/?page=`+page, httpOptions);

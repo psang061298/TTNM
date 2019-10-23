@@ -5,13 +5,13 @@ import { Injectable } from '@angular/core';
 })
 export class SharingDataService {
 
-  private data = {};  
-  
-  setOption(option, value) {      
-    this.data[option] = value;  
-  }  
-  
-  getOption() {  
-    return this.data;  
-  } 
+  private data = {};
+
+  setOption(option, value) {
+    this.data[option] = value;
+  }
+
+  getOption() {
+    return this.data;
+  }
 }

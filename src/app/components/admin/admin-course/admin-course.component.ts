@@ -83,7 +83,7 @@ export class AdminCourseComponent implements OnInit,OnDestroy {
   addCourse(){
 
     let formData = new FormData();
-    
+
     formData.append('name',this.formCourse.get('name').value);  
     formData.append('start_year',this.formCourse.get('start_year').value);
     formData.append('end_year',this.formCourse.get('end_year').value);
