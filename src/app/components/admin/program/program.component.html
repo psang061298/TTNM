@@ -54,7 +54,7 @@
                                     <th>Manager</th>
                                     <th>Status</th>
                                     <th>Delete</th>
-                                    <th>Subjects</th>
+                                    <!-- <th>Subjects</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,9 +68,6 @@
                                     <td [routerLink]="[ '/subjects', item.id ]">{{ item.isActive ? "Active" : "Deactive" }}</td>
                                     <td>
                                         <button type="button" class="btn btn-danger" (click)="delete(item.id)">Del</button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-light">Bấm nút này danh sách môn học sẽ đổ ra bên dưới</button>
                                     </td>
                                 </tr>
                             </tbody>

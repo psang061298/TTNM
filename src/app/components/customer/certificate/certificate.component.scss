@@ -1,13 +1,13 @@
+
 .bg-certificate{
-    // background-image: url('../../../../assets/images/bg.png');
     background-repeat: no-repeat;
     height: 100%;
-
-  /* Center and scale the image nicely */
     background-position: center;
-    // background-repeat: no-repeat;
     background-size: cover;
-    // opacity: 0.5;
+}
+
+body {
+    -webkit-print-color-adjust: exact !important;
 }
 
 .col{
@@ -27,11 +27,27 @@
 }
 
 .margin1{
-    // padding-top: 50px !important;
     margin-top: 50px !important;
 }
 
 .margin0{
-    // padding-top: 50px !important;
     margin-top: 150px !important;
 }
+
+
+// @media screen {
+//     :host {
+//         display: none;
+//     }
+// }
+
+// @media print {
+//     app-root > * { display: none; }
+//     app-root app-print-layout { display: block; }
+// }
+
+// @media screen {
+//     :host {
+//       display: none;
+//     }
+// }

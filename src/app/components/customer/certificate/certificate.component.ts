@@ -29,7 +29,6 @@ export class CertificateComponent implements OnInit {
 
   printCertificate(){
     this.printerService.printCurrentWindow();
-    console.log('in');
     // this.courseService.getInfo(2).subscribe(data => {
     //   console.log(data);
       

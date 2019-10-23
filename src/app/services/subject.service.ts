@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    // 'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+    //'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
     'Set-Cookie' : 'HttpOnly;Secure;SameSite=Strict'
   })
 };
@@ -26,6 +26,10 @@ export class SubjectService {
     return this.http.get<Subject[]>(`${this.API}/api/subject/`);
   }
 
+  getSubjectPage(page: number):Observable<any[]> {
+    return this.http.get<any[]>(`${this.API}/api/subject/?page=${page}`);
+  }
+
   getOneSubject(id: number): Observable<Subject> {
     return this.http.get<Subject>(`${this.API}/api/subject/${id}`);
   }
@@ -34,4 +38,7 @@ export class SubjectService {
       return this.http.get<Subject[]>(`${this.API}/api/subject/?program_id=${id}`,httpOptions);
   }
 
+  getSubjectOfProgram(id : number) : Observable<any[]>{
+    return this.http.get<any[]>(`${this.API}/api/subject/?program_id=${id}`);
+}
 }

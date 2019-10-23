@@ -73,7 +73,7 @@
                                 <!-- <td>{{ item.graduate ? "Graduated" : "Studying..." }}</td> -->
                                 <!-- <td *ngIf="(item.graduate == false && checkGraduate(item) ) ; else elseBlock"> -->
                                 <td *ngIf="(item.graduate == false) ; else elseBlock">
-                                        <button type="button" class="btn btn-warning" (click)="setGraduation(item.studyprogram_id.student_id.username, item.studyprogram_id.course_id.name, item.GPA)">Register</button>
+                                        <button type="button" class="btn btn-warning" (click)="setGraduation(item.studyprogram_id.student_id.name, item.studyprogram_id.course_id.name, item.GPA)">Register</button>
                                 </td>
                                 <ng-template #elseBlock>
                                     <td>{{ item.graduate ? "Graduated" : "Studying..." }}</td>

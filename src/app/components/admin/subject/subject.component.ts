@@ -12,7 +12,7 @@ import { CourseService } from '../../../services/course.service';
 })
 export class SubjectComponent implements OnInit, OnDestroy {
 
-  subjects: Subject[] = [];
+  subjects: any[] = [];
   subscription: Subscription;
   subject: Object = {
     name: '',
@@ -23,11 +23,12 @@ export class SubjectComponent implements OnInit, OnDestroy {
   // subject : Subject = new Subject();
   teacher: any[] = [];
   course: any[] = [];
-  p: number;
+  p: number = 1;
   total: number;
   teacher_id: any;
   courseSelected = -1;
   courseAdded = -1;
+  programs : any[] = [];
 
   constructor(
     public subjectService: SubjectService,
@@ -38,7 +39,10 @@ export class SubjectComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // this.subject = new Subject();
-    this.loadCourse();
+    // this.loadCourse();
+    // this.loadTeacher();
+    this._loadSubject();
+    this._loadProgram();
     this.loadTeacher();
   }
 
@@ -47,6 +51,26 @@ export class SubjectComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
     }
   }
+
+  _loadSubject(){
+    this.subscription = this.subjectService.getSubjectPage(this.p).subscribe( data => {
+      this.subjects = data['results'];
+      this.total = data['count'];
+    });
+  }
+
+  _loadProgram(){
+    this.subscription = this.eduProgramService.getAllEduPrograms().subscribe( data => {
+      this.programs = data;
+    });
+  }
+
+  changePage(){
+    this.subjectService.getSubjectPage(this.p).subscribe( data => {
+      this.subjects = data['results'];
+    });
+  }
+
 
   loadCourse(){
     this.courseService.getAllCourses().subscribe(data => {
@@ -66,14 +90,23 @@ export class SubjectComponent implements OnInit, OnDestroy {
   }
 
   change(id) {
-    this.courseSelected = id;
-    this.loadSubjects(id);
+    // this.courseSelected = id;
+    if( id == "ALL"){
+      this._loadSubject();
+    }else{
+      this.subjectService.getSubjectOfProgram(id).subscribe( data => {
+        this.subjects = data['results'];
+        this.p = 1;
+        this.total = data.length;
+      });
+    }
   }
 
   loadTeacher() {
     this.subscription = this.adminClassService.getTeacher().subscribe( (data : any[]) => {
-      this.teacher = data;
-      this.subject["teacher_id"].push(data[0].id);
+      this.teacher = data['results'];
+      console.log(data);
+      // this.subject["teacher_id"].push(data[0].id);
     });
   }
 

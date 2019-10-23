@@ -38,7 +38,6 @@ export class AdminClassService {
   getTeacher() : Observable<any[]>{
     return this.http.get<any[]>(`${this.API}/api/user/?search=teacher`, httpOptions);
   }
-
   
   postSubject(str): Observable<any>{
     return this.http.post<any>(`${this.API}/api/subject/create/`,str,httpOptions);

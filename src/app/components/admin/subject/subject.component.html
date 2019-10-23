@@ -35,12 +35,13 @@
                         <div class="row">
 
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                <label for="">Course</label>
+                                <label for="">Education Program</label>
                             </div>
 
                             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                                <select class="form-control" [(ngModel)]="courseAdded" (change)="change($event.target.value)">
-                                    <option *ngFor="let item of course" [value]="item.id" >{{item.name}}</option>
+                                <select class="form-control" (change)="change($event.target.value)">
+                                    <option value="ALL" selected>ALL</option>
+                                    <option *ngFor="let item of programs" [value]="item.id" >{{item.name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -69,7 +70,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                        <pagination-controls (pageChange)="p = $event" (click)="changePage()"></pagination-controls>
 
                     </div>
                 </div>
@@ -110,7 +111,7 @@
                             <div class="form-group">
                                 <label for="">Course</label>
                                 <select class="form-control" (change)="changeProgram($event.target.value)" name="program">
-                                                        <option *ngFor="let item of course" [value]="item.id">{{ item.name }}</option>
+                                                        <option *ngFor="let item of programs" [value]="item.id">{{ item.name }}</option>
                                                     </select>
                             </div>
 

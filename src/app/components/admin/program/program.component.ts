@@ -43,12 +43,14 @@ export class ProgramComponent implements OnInit, OnDestroy {
   loadProgram(){
     this.eduProgramService.getAllEduPrograms().subscribe(data => {
       this.program = data;
+      console.log(data);
     });
   }
 
   loadSubjectByProgram(id){
-    this.subjectService.getSubjectOfCourse(id).subscribe(data => {
-      this.subject = data
+    this.subjectService.getSubjectOfProgram(id).subscribe(data => {
+      this.subject = data['results'];
+      console.log(this.subject);
     });
   }
 
