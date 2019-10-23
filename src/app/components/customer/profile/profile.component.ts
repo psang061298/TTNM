@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public subscription: Subscription;
   profile: any;
   form: FormGroup;
+  viewImage : any;
 
   constructor(
     public profileService: ProfileService,
@@ -53,14 +54,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
     //   console.log(data);
     // });
 
-    const formData = new FormData();
+    let formData = new FormData();
     formData.append('first_name', this.profile['first_name']);
     formData.append('last_name', this.profile['last_name']);
     formData.append('email', this.profile['email']);
     formData.append('phone', this.profile['phone']);
     formData.append('address', this.profile['address']);
-    // formData.append('image', this.form.get('image').value);
-    // console.log(formData);
+    formData.append('image', this.form.get('image').value);
+    console.log(formData);
     // this.subscription = this.profileService.updateProfile_FormData(this.profile['id'], formData).subscribe( data => {
     //   console.log(data);
     // });
@@ -89,6 +90,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.form.get('image').setValue(file);
+      
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]); 
+      reader.onload = (_event) => { 
+      this.profile.image = reader.result; 
+      }
     }
     // this.profileService.updateAvatar(this.profile['id'], file.item(0), file.item(0)['name']).subscribe( data => {
     //   console.log(data);
